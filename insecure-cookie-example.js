@@ -13,7 +13,7 @@ app.post('/login', (req, res) => {
   const { username, password } = req.body;
   if (username === 'admin' && password === 'password') {
     // Options dict is present but `secure` is missing → Snyk flags this.
-    res.cookie('session', 'valid', { httpOnly: true, path: '/' });
+    res.cookie('session', 'valid', { secure: true, httpOnly: true, path: '/' });
     res.status(200).send('Login successful');
   } else {
     res.status(401).send('Invalid credentials');
